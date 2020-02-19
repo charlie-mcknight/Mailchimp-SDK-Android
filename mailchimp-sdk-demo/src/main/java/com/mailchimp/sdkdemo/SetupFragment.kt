@@ -18,7 +18,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.mailchimp.sdk.api.di.ApiImplementation
 import com.mailchimp.sdk.audience.di.AudienceDependencies
 import com.mailchimp.sdk.audience.di.AudienceImplementation
@@ -59,7 +58,8 @@ class SetupFragment : Fragment() {
                     .build()
             Mailchimp.initialize(configuration)
 
-            goToHomeFragment()
+            val configurationInfo = ConfigurationInfo("sdkkey-us1", cbx_debug.isChecked, cbx_autotag.isChecked)
+            goToHomeFragment(configurationInfo)
         }
     }
 
@@ -85,11 +85,12 @@ class SetupFragment : Fragment() {
         mock.initializeMock()
         MockMailchimp.setAudienceAsMock(mock)
 
-        goToHomeFragment()
+        val configurationInfo = ConfigurationInfo("sdkkey-us1", cbx_debug.isChecked, cbx_autotag.isChecked)
+        goToHomeFragment(configurationInfo)
     }
 
-    private fun goToHomeFragment() {
-        val action = SetupFragmentDirections.actionSetupFragmentToHomeFragment()
-        findNavController().navigate(action)
+    private fun goToHomeFragment(configurationInfo: ConfigurationInfo) {
+//        val action = SetupFragmentDirections.actionSetupFragmentToHomeFragment(configurationInfo)
+//        findNavController().navigate(action)
     }
 }

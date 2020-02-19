@@ -53,7 +53,6 @@ class AddEventFragment : Fragment() {
             return
         }
 
-
         val properties = mutableMapOf<String, String>()
         for (view in propertiesCellList) {
             val propertyName = view.key

@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
+//    private val args: HomeFragmentArgs by navArgs()
+//    private val configurationInfo : ConfigurationInfo get() {return args.configurationInfo}
+
     private lateinit var pagerAdapter: HomeFragmentPagerAdapter
 
     override fun onCreateView(
@@ -38,7 +41,12 @@ class HomeFragment : Fragment() {
         pagerAdapter = HomeFragmentPagerAdapter(fragmentManager!!)
         view_pager_FH.adapter = pagerAdapter
         tab_layout_FH.setupWithViewPager(view_pager_FH)
+        viewConfiguration.setOnClickListener { goToConfigurationFragment() }
+    }
 
+    private fun goToConfigurationFragment() {
+//        val action = HomeFragmentDirections.actionHomeFragmentToConfigurationInfoFragment(configurationInfo)
+//        findNavController().navigate(action)
     }
 
 }
